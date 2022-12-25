@@ -1,0 +1,160 @@
+[
+  {
+    "name": "Bourg Palette",
+    "activities": []
+  },
+  {
+    "name": "Comté",
+    "activities": [
+      {
+        "activity_title": "Follow-up - 306radiator",
+        "module_title": "B5 - Mathematics",
+        "module_code": "B-MAT-500",
+        "start_at": 1671526800000,
+        "end_at": 1671530400000,
+        "oros_tags": [],
+        "type": "rdv"
+      },
+      {
+        "activity_title": "Kick-off - Sprint Communication",
+        "module_title": "B5 - Innov. - Make & Drive",
+        "module_code": "B-MOO-502",
+        "start_at": 1671532200000,
+        "end_at": 1671535800000,
+        "oros_tags": [],
+        "type": "rdv"
+      },
+      {
+        "activity_title": "Kick-off - Innovation Track Step 5 - DRIVE",
+        "module_title": "B5 - Innov. - Make & Drive",
+        "module_code": "B-MOO-502",
+        "start_at": 1671532200000,
+        "end_at": 1671535800000,
+        "oros_tags": [],
+        "type": "class"
+      },
+      {
+        "activity_title": "SPO MSC / CONFERENCE",
+        "start_at": 1671552000000,
+        "end_at": 1671562800000,
+        "oros_tags": []
+      }
+    ]
+  },
+  {
+    "name": "Gallifrey",
+    "activities": [
+      {
+        "activity_title": "Defense - Chisel",
+        "module_title": "B5 - Advanced Security",
+        "module_code": "B-SEC-500",
+        "start_at": 1671544800000,
+        "end_at": 1671559200000,
+        "oros_tags": [],
+        "type": "rdv"
+      }
+    ]
+  },
+  {
+    "name": "Gotham",
+    "activities": [
+      {
+        "activity_title": "preMSc",
+        "start_at": 1671526800000,
+        "end_at": 1671559200000,
+        "oros_tags": []
+      }
+    ]
+  },
+  {
+    "name": "Hub Innovation",
+    "activities": []
+  },
+  {
+    "name": "Mordor",
+    "activities": [
+      {
+        "activity_title": "Phoenix Bootcamp - Day 02",
+        "module_title": "B1 - Bootcamp Phoenix",
+        "module_code": "B-BOO-101",
+        "start_at": 1671526800000,
+        "end_at": 1671571800000,
+        "oros_tags": [],
+        "type": "tp"
+      },
+      {
+        "activity_title": "Kick-off - 104intersection",
+        "module_title": "B1 - Mathematics",
+        "module_code": "B-MAT-100",
+        "start_at": 1671530400000,
+        "end_at": 1671532200000,
+        "oros_tags": [],
+        "type": "class"
+      },
+      {
+        "activity_title": "Bootstrap - 104intersection",
+        "module_title": "B1 - Mathematics",
+        "module_code": "B-MAT-100",
+        "start_at": 1671532200000,
+        "end_at": 1671537600000,
+        "oros_tags": [],
+        "type": "tp"
+      },
+      {
+        "activity_title": "Kick-off - 104intersection",
+        "module_title": "B1 - Mathematics",
+        "module_code": "B-MAT-100",
+        "start_at": 1671544800000,
+        "end_at": 1671546600000,
+        "oros_tags": [],
+        "type": "class"
+      },
+      {
+        "activity_title": "Bootstrap - 104intersection",
+        "module_title": "B1 - Mathematics",
+        "module_code": "B-MAT-100",
+        "start_at": 1671546600000,
+        "end_at": 1671552000000,
+        "oros_tags": [],
+        "type": "tp"
+      }
+    ]
+  },
+  {
+    "name": "Poudlard",
+    "activities": []
+  },
+  {
+    "name": "Tatooine",
+    "activities": [
+      {
+        "activity_title": "MSc1",
+        "start_at": 1671525900000,
+        "end_at": 1671559200000,
+        "oros_tags": []
+      }
+    ]
+  },
+  {
+    "name": "Torvalds",
+    "activities": []
+  },
+  {
+    "name": "Vogons",
+    "activities": [
+      {
+        "activity_title": "Communiquer efficacement",
+        "module_title": "T6 - PCP Development",
+        "module_code": "T-PCP-600",
+        "start_at": 1671544800000,
+        "end_at": 1671559200000,
+        "oros_tags": [],
+        "type": "tp"
+      }
+    ]
+  },
+  {
+    "name": "Westeros",
+    "activities": []
+  }
+]

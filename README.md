@@ -1,16 +1,11 @@
-# epitech
+# Oros
 
-A new Flutter project.
+Quick flutter app aivailable on iOS, MacOS, Android, Windows, Linux, Web
+that scrap the json file of official Oros website, copy the data and
+retrieve it in a brand new interface. 
 
-## Getting Started
+Firebase, Flutter
 
-This project is a starting point for a Flutter application.
+Xcode, Android Studio, Vscode
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Hope you enjoy Oros !

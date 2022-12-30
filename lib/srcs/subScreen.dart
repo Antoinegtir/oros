@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-
 import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:epitech/main.dart';

@@ -826,15 +826,17 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.transparent,
-            leading: GestureDetector(
-                onTap: () {
-                  openDarkModeSettings(context);
-                },
-                child: Icon(
-                  Icons.menu,
-                  color: darkmode,
-                  size: 30,
-                ))),
+            leading: kIsWeb
+                ? const SizedBox.shrink()
+                : GestureDetector(
+                    onTap: () {
+                      openDarkModeSettings(context);
+                    },
+                    child: Icon(
+                      Icons.menu,
+                      color: darkmode,
+                      size: 30,
+                    ))),
         backgroundColor: lightmode,
         body: FadeInDown(
           duration: const Duration(seconds: 2),
@@ -887,7 +889,11 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: MediaQuery.of(context).size.height / 0.5,
                               autoPlayInterval: const Duration(seconds: 3),
                               aspectRatio: 16 / 9,
-                              viewportFraction: 0.70,
+                              viewportFraction:
+                                  MediaQuery.of(context).size.width / 1 >
+                                          MediaQuery.of(context).size.height / 1
+                                      ? 0.6
+                                      : 0.70,
                               enlargeCenterPage: true,
                               onPageChanged: (index, reason) {
                                 setState(() {
@@ -1110,7 +1116,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                 color: Colors
                                                                     .grey
                                                                     .shade600,
-                                                                size: 20,
+                                                                size: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width /
+                                                                    40,
                                                               )),
                                                           const SizedBox(
                                                             width: 5,
@@ -1133,17 +1143,19 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                           _current,
                                                                     });
                                                               },
-                                                              child: const Text(
+                                                              child: Text(
                                                                 "info",
                                                                 style: TextStyle(
-                                                                    fontSize:
-                                                                        14.0,
-                                                                    color: Color
-                                                                        .fromARGB(
-                                                                            255,
-                                                                            117,
-                                                                            117,
-                                                                            117)),
+                                                                    fontSize: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width /
+                                                                        40,
+                                                                    color: const Color
+                                                                            .fromARGB(
+                                                                        255,
+                                                                        117,
+                                                                        117,
+                                                                        117)),
                                                               )),
                                                           const SizedBox(
                                                             width: 10,

@@ -15,6 +15,14 @@ bool splash = false;
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
+    final darkmode =
+        MediaQuery.of(context).platformBrightness == Brightness.light
+            ? Colors.white
+            : Colors.black;
+    final lightmode =
+        MediaQuery.of(context).platformBrightness != Brightness.light
+            ? Colors.white
+            : Colors.black;
     if (splash == false) {
       Future.delayed(const Duration(seconds: 2)).then((_) {
         setState(() {
@@ -24,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     }
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: darkmode,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -37,16 +45,19 @@ class _SplashScreenState extends State<SplashScreen> {
                     children: [
                       FadeInUp(
                           child: Image.asset(
-                        "assets/epitech.png",
+                        MediaQuery.of(context).platformBrightness ==
+                                Brightness.light
+                            ? "assets/logo.png"
+                            : "assets/epitech.png",
                       ))
                     ],
                   ))),
           FadeInUp(
               duration: const Duration(seconds: 2),
-              child: const Text(
+              child: Text(
                 "Oros",
                 style: TextStyle(
-                    color: Colors.white,
+                    color: lightmode,
                     fontWeight: FontWeight.w600,
                     fontSize: 36),
               ))

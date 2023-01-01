@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:convert';
+import 'package:epitech/model/localData.dart';
 import 'package:epitech/settings/about.dart';
 import 'package:epitech/settings/apparence.dart';
 import 'package:epitech/srcs/homeScreen.dart';
@@ -7,7 +8,7 @@ import 'package:epitech/srcs/splashScreen.dart';
 import 'package:epitech/srcs/subScreen.dart';
 import 'package:epitech/utilities/utility.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';  
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -55,7 +56,13 @@ class _MyAppState extends State<MyApp> {
         providers: [
           ChangeNotifierProvider(
               create: (context) =>
-                  MyThemeModel(sharedPreferences: widget.sharedPreferences))
+                  MyThemeModel(sharedPreferences: widget.sharedPreferences)),
+                  ChangeNotifierProvider(
+              create: (context) =>
+                  MyThemeSettingsModel(sharedPreferences: widget.sharedPreferences)),
+                  ChangeNotifierProvider(
+              create: (context) =>
+                  MyThemeModeModel(sharedPreferences: widget.sharedPreferences))
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

@@ -1,16 +1,21 @@
+// Copyright 2017 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+// ignore_for_file: public_member_api_docs
 import 'dart:async';
 import 'dart:io';
 import 'dart:ui';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:epitech/model/localData.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class InformationsPage extends StatefulWidget {
   const InformationsPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _InformationsPageState createState() => _InformationsPageState();
 }
 
@@ -166,27 +171,44 @@ class _InformationsPageState extends State<InformationsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final darkmode =
-        MediaQuery.of(context).platformBrightness == Brightness.light
-            ? const Color(0xfff2f2f6)
-            : Colors.black;
-    final lightmode =
-        MediaQuery.of(context).platformBrightness == Brightness.dark
-            ? Colors.white
-            : Colors.black;
-    final lightmodes =
-        MediaQuery.of(context).platformBrightness == Brightness.dark
-            ? const Color.fromARGB(255, 155, 155, 155)
-            : Colors.black;
-    final darkmodes =
-        MediaQuery.of(context).platformBrightness == Brightness.light
-            ? Colors.white
-            : const Color(0xff1c1c1e);
-    return Scaffold(
-        backgroundColor: darkmode,
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-            elevation: 0,
+    return Consumer2<MyThemeModeModel, MyThemeSettingsModel>(
+        builder: (context, mode, settings, child) {
+      final darkmode = settings.isSettingsTheme == true
+          ? MediaQuery.of(context).platformBrightness == Brightness.light
+              ? Color(0xfff2f2f6)
+              : Colors.black
+          : mode.isModeTheme == true
+              ? Color(0xfff2f2f6)
+              : Colors.black;
+
+      final lightmode = settings.isSettingsTheme == true
+          ? MediaQuery.of(context).platformBrightness == Brightness.light
+              ? Colors.black
+              : Colors.white
+          : mode.isModeTheme == false
+              ? Colors.white
+              : Colors.black;
+
+      final darkmodes = settings.isSettingsTheme == true
+          ? MediaQuery.of(context).platformBrightness == Brightness.light
+              ? Colors.white
+              : Color(0xff1c1c1e)
+          : mode.isModeTheme == true
+              ? Colors.white
+              : Color(0xff1c1c1e);
+
+      final lightmodes = settings.isSettingsTheme == true
+          ? MediaQuery.of(context).platformBrightness == Brightness.dark
+              ? Color.fromARGB(255, 155, 155, 155)
+              : Colors.black
+          : mode.isModeTheme == true
+              ? Color.fromARGB(255, 155, 155, 155)
+              : Colors.black;
+
+      return Scaffold(
+          backgroundColor: darkmode,
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
             flexibleSpace: ClipRRect(
                 child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
@@ -196,120 +218,117 @@ class _InformationsPageState extends State<InformationsPage> {
                       height: 200,
                     ))),
             backgroundColor: Colors.transparent,
-            centerTitle: false,
-            leading: const BackButton(color: Colors.blue),
-            title: Hero(
-              tag: 'device',
-              child: Text(
-                kIsWeb
-                    ? 'Web Browser info'
-                    : Platform.isAndroid
-                        ? 'Android Device Info'
-                        : Platform.isIOS
-                            ? 'iOS Device Info'
-                            : Platform.isLinux
-                                ? 'Linux Device Info'
-                                : Platform.isMacOS
-                                    ? 'MacOS Device Info'
-                                    : Platform.isWindows
-                                        ? 'Windows Device Info'
-                                        : '',
-                style: const TextStyle(color: Colors.blue),
-              ),
-            )),
-        body: GestureDetector(
-          onHorizontalDragUpdate: (details) {
-            if (details.delta.dx > 0) {
-              setState(() {
-                Navigator.pop(context);
-              });
-            }
-          },
-          child: !Platform.isIOS
-              ? ListView(
-                  children: _deviceData.keys.map(
-                    (String property) {
-                      return Padding(
-                          padding: const EdgeInsets.only(
-                              left: 5, right: 5, bottom: 0, top: 20),
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(40),
-                              child: Container(
-                                  color: darkmodes,
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        padding: const EdgeInsets.only(
-                                            left: 20.0,
-                                            top: 13,
-                                            bottom: 13,
-                                            right: 30),
-                                        child: Text(
-                                          property,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: lightmode,
-                                              fontSize: 16),
+            title: Text(
+              kIsWeb
+                  ? 'Web Browser info'
+                  : Platform.isAndroid
+                      ? 'Android Device Info'
+                      : Platform.isIOS
+                          ? 'iOS Device Info'
+                          : Platform.isLinux
+                              ? 'Linux Device Info'
+                              : Platform.isMacOS
+                                  ? 'MacOS Device Info'
+                                  : Platform.isWindows
+                                      ? 'Windows Device Info'
+                                      : '',
+              style: TextStyle(color: lightmode),
+            ),
+          ),
+          body: GestureDetector(
+            onHorizontalDragUpdate: (details) {
+              if (details.delta.dx > 0) {
+                setState(() {
+                  Navigator.pop(context);
+                });
+              }
+            },
+            child: !Platform.isIOS
+                ? ListView(
+                    children: _deviceData.keys.map(
+                      (String property) {
+                        return Padding(
+                            padding: EdgeInsets.only(
+                                left: 5, right: 5, bottom: 0, top: 20),
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
+                                child: Container(
+                                    color: darkmodes,
+                                    child: Row(
+                                      children: <Widget>[
+                                        Container(
+                                          padding: const EdgeInsets.only(
+                                              left: 20.0,
+                                              top: 13,
+                                              bottom: 13,
+                                              right: 30),
+                                          child: Text(
+                                            property,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: lightmode,
+                                                fontSize: 16),
+                                          ),
                                         ),
-                                      ),
-                                      Expanded(
-                                          child: Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0.0, 10.0, 0.0, 10.0),
-                                        child: Text(
-                                          '${_deviceData[property]}',
-                                          maxLines: 10,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(color: lightmodes),
+                                        Expanded(
+                                            child: Container(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0.0, 10.0, 0.0, 10.0),
+                                          child: Text(
+                                            '${_deviceData[property]}',
+                                            maxLines: 10,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(color: lightmodes),
+                                          ),
+                                        )),
+                                      ],
+                                    ))));
+                      },
+                    ).toList(),
+                  )
+                : ListView(
+                    children: _deviceData.keys.map(
+                      (String property) {
+                        return Padding(
+                            padding: EdgeInsets.only(
+                                left: 15, right: 15, bottom: 0, top: 20),
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Container(
+                                    color: darkmodes,
+                                    child: Row(
+                                      children: <Widget>[
+                                        Container(
+                                          padding: const EdgeInsets.only(
+                                              left: 20.0,
+                                              top: 13,
+                                              bottom: 13,
+                                              right: 20),
+                                          child: Text(
+                                            property,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: lightmode,
+                                                fontSize: 16),
+                                          ),
                                         ),
-                                      )),
-                                    ],
-                                  ))));
-                    },
-                  ).toList(),
-                )
-              : ListView(
-                  children: _deviceData.keys.map(
-                    (String property) {
-                      return Padding(
-                          padding: const EdgeInsets.only(
-                              left: 15, right: 15, bottom: 0, top: 20),
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Container(
-                                  color: darkmodes,
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        padding: const EdgeInsets.only(
-                                            left: 20.0,
-                                            top: 13,
-                                            bottom: 13,
-                                            right: 20),
-                                        child: Text(
-                                          property,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: lightmode,
-                                              fontSize: 16),
-                                        ),
-                                      ),
-                                      Expanded(
-                                          child: Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0.0, 10.0, 0.0, 10.0),
-                                        child: Text(
-                                          '${_deviceData[property]}',
-                                          maxLines: 10,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(color: lightmodes),
-                                        ),
-                                      )),
-                                    ],
-                                  ))));
-                    },
-                  ).toList(),
-                ),
-        ));
+                                        Expanded(
+                                            child: Container(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0.0, 10.0, 0.0, 10.0),
+                                          child: Text(
+                                            '${_deviceData[property]}',
+                                            maxLines: 10,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(color: lightmodes),
+                                          ),
+                                        )),
+                                      ],
+                                    ))));
+                      },
+                    ).toList(),
+                  ),
+          ));
+    });
   }
 }

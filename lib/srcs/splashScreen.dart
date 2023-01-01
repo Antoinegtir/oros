@@ -28,21 +28,21 @@ class _SplashScreenState extends State<SplashScreen> {
     return Consumer2<MyThemeModeModel, MyThemeSettingsModel>(
         builder: (context, mode, settings, child) {
       final lightmode = settings.isSettingsTheme == true
-          ? MediaQuery.of(context).platformBrightness == Brightness.dark
-              ? Colors.black
-              : Colors.white
-          : mode.isModeTheme == false
-              ? Colors.black
-              : Colors.white;
-
-      final darkmode = settings.isSettingsTheme == true
           ? MediaQuery.of(context).platformBrightness == Brightness.light
               ? Colors.black
               : Colors.white
           : mode.isModeTheme == true
               ? Colors.black
               : Colors.white;
-      return Scaffold(
+
+      final darkmode = settings.isSettingsTheme == true
+          ? MediaQuery.of(context).platformBrightness == Brightness.dark
+              ? Colors.black
+              : Colors.white
+          : mode.isModeTheme == false
+              ? Colors.black
+              : Colors.white;
+      return Scaffold(M
         backgroundColor: darkmode,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -56,11 +56,11 @@ class _SplashScreenState extends State<SplashScreen> {
                       children: [
                         FadeInUp(
                             child: Image.asset(settings.isSettingsTheme == true
-                                ? MediaQuery.of(context).platformBrightness ==
+                                ? MediaQuery.of(context).platformBrightness !=
                                         Brightness.light
                                     ? "assets/epitech.png"
                                     : "assets/logo.png"
-                                : mode.isModeTheme == true
+                                : mode.isModeTheme == false
                                     ? "assets/epitech.png"
                                     : "assets/logo.png"))
                       ],

@@ -254,8 +254,8 @@ class _AboutPageState extends State<AboutPage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Utility.launchURL(
-                                  //     "https://kams-17c7d.web.app/#/");
+                                  Utility.launchURL(
+                                      "https://test-bdb24.web.app/home");
                                 },
                                 child: Container(
                                     color: darkmodes,
@@ -524,8 +524,8 @@ class _AboutPageState extends State<AboutPage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Utility.launchURL(
-                                  //     "https://kams-17c7d.web.app/#/");
+                                  Utility.launchURL(
+                                      "https://test-bdb24.web.app/home");
                                 },
                                 child: Container(
                                     color: darkmodes,

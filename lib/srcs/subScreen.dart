@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:epitech/main.dart';
 import 'package:epitech/model/localData.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -82,7 +83,7 @@ class _SubPageState extends State<SubPage> with SingleTickerProviderStateMixin {
                   trans = true;
                 });
                 Navigator.of(context).pushNamed(
-                  '/home',
+                  kIsWeb ? '/' : '/home',
                 );
               },
             ),
@@ -104,7 +105,9 @@ class _SubPageState extends State<SubPage> with SingleTickerProviderStateMixin {
                 if (details.delta.dx > 0) {
                   setState(() {
                     trans = true;
-                    Navigator.pop(context);
+                    Navigator.of(context).pushNamed(
+                      kIsWeb ? '/' : '/home',
+                    );
                   });
                 }
               },

@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
           : mode.isModeTheme == false
               ? Colors.black
               : Colors.white;
-      return Scaffold(M
+      return Scaffold(
         backgroundColor: darkmode,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,

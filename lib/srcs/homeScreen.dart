@@ -13,16 +13,16 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import '../utilities/utility.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePages extends StatefulWidget {
   final dynamic jsonData;
-  const MyHomePage({Key? key, this.jsonData}) : super(key: key);
+  const MyHomePages({Key? key, this.jsonData}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePagesState createState() => _MyHomePagesState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePagesState extends State<MyHomePages> {
   int _current = 0;
   @override
   void initState() {
@@ -1175,14 +1175,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                             _current,
                                                                       });
                                                                 },
-                                                                child: Text(
+                                                                child:
+                                                                    const Text(
                                                                   "info",
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                          MediaQuery.of(context).size.width /
-                                                                              40,
-                                                                      color: const Color
-                                                                              .fromARGB(
+                                                                          14.0,
+                                                                      color: Color.fromARGB(
                                                                           255,
                                                                           117,
                                                                           117,
@@ -1200,7 +1199,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                     color: Colors
                                                                         .grey
                                                                         .shade600,
-                                                                    size: 20,
+                                                                    size: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width /
+                                                                        40,
                                                                   )
                                                                 : const SizedBox
                                                                     .shrink(),

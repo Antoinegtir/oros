@@ -3,10 +3,12 @@ import 'dart:convert';
 import 'package:epitech/model/localData.dart';
 import 'package:epitech/settings/about.dart';
 import 'package:epitech/settings/apparence.dart';
+import 'package:epitech/srcs/ListScreen.dart';
 import 'package:epitech/srcs/homeScreen.dart';
 import 'package:epitech/srcs/splashScreen.dart';
 import 'package:epitech/srcs/subScreen.dart';
 import 'package:epitech/utilities/utility.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';  
 import 'package:provider/provider.dart';
@@ -66,11 +68,11 @@ class _MyAppState extends State<MyApp> {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: "/",
+          initialRoute:"/",
           title: "Oros",
           routes: {
-            '/': (context) => SplashScreen(jsonData: widget.jsonData),
-            '/home': (context) => MyHomePage(jsonData: widget.jsonData),
+            '/': (context) => kIsWeb?MyHomePage(jsonData: widget.jsonData): SplashScreen(jsonData: widget.jsonData),
+            '/home': (context) => MyHomePages(jsonData: widget.jsonData),
             '/info': (context) => SubPage(jsonData: widget.jsonData),
             '/device': (context) => const InformationsPage(),
             '/about': (context) => const AboutPage(),

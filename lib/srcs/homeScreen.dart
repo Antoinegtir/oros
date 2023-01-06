@@ -1,11 +1,13 @@
 // ignore_for_file: file_names
-
 import 'dart:io';
 import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:epitech/animation/animation.dart';
 import 'package:epitech/main.dart';
 import 'package:epitech/model/localData.dart';
+import 'package:epitech/srcs/ListScreen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -24,10 +26,6 @@ class MyHomePages extends StatefulWidget {
 
 class _MyHomePagesState extends State<MyHomePages> {
   int _current = 0;
-  @override
-  void initState() {
-    super.initState();
-  }
 
   void openBottomSheet(
     BuildContext context,
@@ -41,7 +39,7 @@ class _MyHomePagesState extends State<MyHomePages> {
         return ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 300, sigmaY: 300),
+                filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
                 child: Container(
                   height: height,
                   decoration: const BoxDecoration(
@@ -56,6 +54,12 @@ class _MyHomePagesState extends State<MyHomePages> {
       },
     );
   }
+
+  Future<bool> escape() async {
+    return true;
+  }
+
+  bool isHeart = true;
 
   void openDarkModeSettings(BuildContext context) {
     openBottomSheet(
@@ -73,16 +77,16 @@ class _MyHomePagesState extends State<MyHomePages> {
 
         final darkmodes = settings.isSettingsTheme == true
             ? MediaQuery.of(context).platformBrightness == Brightness.dark
-                ? Color(0xff1c1c1e)
+                ? const Color(0xff1c1c1e)
                 : Colors.white
             : mode.isModeTheme == false
-                ? Color(0xff1c1c1e)
+                ? const Color(0xff1c1c1e)
                 : Colors.white;
         return ListView(
           children: <Widget>[
             Padding(
                 padding: EdgeInsets.symmetric(
-                    vertical: 10,
+                    vertical: 20,
                     horizontal: MediaQuery.of(context).size.width / 2.3),
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
@@ -124,7 +128,6 @@ class _MyHomePagesState extends State<MyHomePages> {
                         borderRadius: BorderRadius.circular(40),
                         child: Container(
                             width: 50,
-                            height: 281,
                             color: darkmodes,
                             child: Column(children: [
                               GestureDetector(
@@ -191,76 +194,6 @@ class _MyHomePagesState extends State<MyHomePages> {
                                   ),
                                 ],
                               ),
-                              GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).pushNamed(
-                                      '/device',
-                                    );
-                                  },
-                                  child: Container(
-                                    color: darkmodes,
-                                    width: 500,
-                                    height: 70,
-                                    child: Row(children: [
-                                      Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 30),
-                                          child: Row(
-                                            children: [
-                                              Stack(
-                                                children: [
-                                                  ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              50),
-                                                      child: Container(
-                                                        height: 35,
-                                                        width: 35,
-                                                        color: Colors.grey,
-                                                        child: const Icon(
-                                                          Icons.settings,
-                                                          color: Colors.white,
-                                                          size: 25,
-                                                        ),
-                                                      ))
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 12),
-                                                child: Hero(
-                                                    tag: 'device',
-                                                    child: Text(
-                                                      kIsWeb
-                                                          ? 'Web Browser info'
-                                                          : Platform.isAndroid
-                                                              ? 'Android Device Info'
-                                                              : Platform.isIOS
-                                                                  ? 'iOS Device Info'
-                                                                  : Platform
-                                                                          .isLinux
-                                                                      ? 'Linux Device Info'
-                                                                      : Platform
-                                                                              .isMacOS
-                                                                          ? 'MacOS Device Info'
-                                                                          : Platform.isWindows
-                                                                              ? 'Windows Device Info'
-                                                                              : '',
-                                                      style: TextStyle(
-                                                          fontSize: 16,
-                                                          color: lightmode,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none,
-                                                          fontFamily: 'Outfit',
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    )),
-                                              ),
-                                            ],
-                                          )),
-                                    ]),
-                                  )),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -402,7 +335,7 @@ class _MyHomePagesState extends State<MyHomePages> {
                         borderRadius: BorderRadius.circular(12),
                         child: Container(
                             width: 50,
-                            height: 251,
+                            height: 181,
                             color: darkmodes,
                             child: Column(children: [
                               GestureDetector(
@@ -485,92 +418,6 @@ class _MyHomePagesState extends State<MyHomePages> {
                                   ),
                                 ],
                               ),
-                              GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).pushNamed(
-                                      '/device',
-                                    );
-                                  },
-                                  child: Container(
-                                    color: darkmodes,
-                                    width: 500,
-                                    height: 60,
-                                    child: Row(children: [
-                                      Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 15),
-                                          child: Row(
-                                            children: [
-                                              Stack(
-                                                children: [
-                                                  ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              7),
-                                                      child: Container(
-                                                        height: 30,
-                                                        width: 30,
-                                                        color: Colors.grey,
-                                                        child: const Icon(
-                                                          Icons.settings,
-                                                          color: Colors.white,
-                                                          size: 25,
-                                                        ),
-                                                      ))
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 12),
-                                                child: Hero(
-                                                    tag: 'Account',
-                                                    child: Text(
-                                                      kIsWeb
-                                                          ? 'Web Browser info'
-                                                          : Platform.isAndroid
-                                                              ? 'Android Device Info'
-                                                              : Platform.isIOS
-                                                                  ? 'iOS Device Info'
-                                                                  : Platform
-                                                                          .isLinux
-                                                                      ? 'Linux Device Info'
-                                                                      : Platform
-                                                                              .isMacOS
-                                                                          ? 'MacOS Device Info'
-                                                                          : Platform.isWindows
-                                                                              ? 'Windows Device Info'
-                                                                              : '',
-                                                      style: TextStyle(
-                                                          fontSize: 16,
-                                                          color: lightmode,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none,
-                                                          fontFamily: 'Outfit',
-                                                          fontWeight:
-                                                              FontWeight.w400),
-                                                    )),
-                                              ),
-                                            ],
-                                          )),
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                3,
-                                      ),
-                                      Row(
-                                        // ignore: prefer_const_literals_to_create_immutables
-                                        children: [
-                                          const Icon(
-                                            Icons.arrow_forward_ios,
-                                            color:
-                                                Color.fromARGB(255, 92, 92, 92),
-                                            size: 15,
-                                          )
-                                        ],
-                                      )
-                                    ]),
-                                  )),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
@@ -760,7 +607,7 @@ class _MyHomePagesState extends State<MyHomePages> {
     // ignore: no_leading_underscores_for_local_identifiers
     final CarouselController _carouselController = CarouselController();
     DateTime now = DateTime.now();
-    DateFormat dateFormat = DateFormat("HH'h'mm");
+    DateFormat dateFormat = DateFormat("HH':'mm");
     Duration sub = const Duration(hours: 1);
 
     List<Map<String, dynamic>> rooms = [];
@@ -854,395 +701,424 @@ class _MyHomePagesState extends State<MyHomePages> {
           : mode.isModeTheme == true
               ? Colors.black
               : Colors.white;
-      return Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              leading: kIsWeb
-                  ? const SizedBox.shrink()
-                  : GestureDetector(
-                      onTap: () {
-                        openDarkModeSettings(context);
-                      },
-                      child: Icon(
-                        Icons.menu,
-                        color: darkmode,
-                        size: 30,
-                      ))),
-          backgroundColor: lightmode,
-          body: FadeInDown(
-            duration: const Duration(seconds: 2),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: Stack(
-                children: [
-                  SizedBox(
-                      height: 500,
-                      width: MediaQuery.of(context).size.width / 1,
-                      child: Hero(
-                          tag: rooms[_current]['name']!.toLowerCase(),
-                          child: Image.asset(
-                              "assets/rooms/${rooms[_current]['name']!.toLowerCase()}.png",
-                              fit: BoxFit.cover))),
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
-                              colors: [
-                            lightmode.withOpacity(1),
-                            lightmode.withOpacity(1),
-                            lightmode.withOpacity(1),
-                            lightmode.withOpacity(1),
-                            lightmode.withOpacity(0.0),
-                            lightmode.withOpacity(0.0),
-                            lightmode.withOpacity(0.0),
-                            lightmode.withOpacity(0.0),
-                          ])),
-                    ),
-                  ),
-                  Consumer<MyThemeModel>(
-                      builder: (context, theme, child) => Positioned(
-                            bottom: 0,
-                            height: MediaQuery.of(context).size.width / 1 >
-                                    MediaQuery.of(context).size.height / 1
-                                ? MediaQuery.of(context).size.height * 0.9
-                                : MediaQuery.of(context).size.height * 0.775,
-                            width: MediaQuery.of(context).size.width,
-                            child: CarouselSlider(
-                              options: CarouselOptions(
-                                autoPlay:
-                                    theme.isAnimated == true ? true : false,
-                                height:
-                                    MediaQuery.of(context).size.height / 0.5,
-                                autoPlayInterval: const Duration(seconds: 3),
-                                aspectRatio: 16 / 9,
-                                viewportFraction:
-                                    MediaQuery.of(context).size.width / 1 >
-                                            MediaQuery.of(context).size.height /
-                                                1
-                                        ? 0.6
-                                        : 0.70,
-                                enlargeCenterPage: true,
-                                onPageChanged: (index, reason) {
-                                  setState(() {
-                                    _current = index;
-                                  });
-                                },
-                              ),
-                              carouselController: _carouselController,
-                              items: rooms.map((movie) {
-                                return Builder(
-                                  builder: (BuildContext context) {
-                                    int index = rooms.indexOf(movie);
-                                    return AnimatedOpacity(
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        opacity: trans ? 1.0 : 0.0,
-                                        child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                            child: BackdropFilter(
-                                                filter: ImageFilter.blur(
-                                                    sigmaX: 30, sigmaY: 30),
-                                                child: Container(
-                                                  width: MediaQuery.of(context)
-                                                      .size
-                                                      .width,
-                                                  margin: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 5.0),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.transparent,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                  ),
-                                                  child: Column(
-                                                    children: [
-                                                      Container(
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height /
-                                                              2.5,
-                                                          margin: EdgeInsets.only(
-                                                              top: MediaQuery.of(
+      final url = rooms[_current]['name'].toString().toLowerCase();
+      return WillPopScope(
+          onWillPop: () {
+            return escape();
+          },
+          child: Scaffold(
+              extendBodyBehindAppBar: true,
+              appBar: AppBar(
+                  elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  actions: [
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              AwesomePageRoute(
+                                  transitionDuration:
+                                      const Duration(milliseconds: 600),
+                                  exitPage: widget,
+                                  enterPage: MyHomePage(
+                                    jsonData: sortedData,
+                                  ),
+                                  transition: ZoomOutSlideTransition()));
+                        },
+                        child: Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Icon(
+                              Icons.menu,
+                              color: darkmode,
+                              size: 30,
+                            )))
+                  ],
+                  leading: kIsWeb
+                      ? const SizedBox.shrink()
+                      : GestureDetector(
+                          onTap: () {
+                            openDarkModeSettings(context);
+                          },
+                          child: Icon(
+                            Icons.settings,
+                            color: darkmode,
+                            size: 30,
+                          ))),
+              backgroundColor: lightmode,
+              body: FadeInDown(
+                duration: const Duration(microseconds: 100),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                          height: 500,
+                          width: MediaQuery.of(context).size.width / 1,
+                          child: Hero(
+                              tag: rooms[_current]['name']!.toLowerCase(),
+                              child: CachedNetworkImage(
+                                  placeholderFadeInDuration:
+                                      const Duration(milliseconds: 50),
+                                  imageUrl:
+                                      "https://firebasestorage.googleapis.com/v0/b/oros-f490a.appspot.com/o/room%2F$url.png?alt=media&token=f19ff22d-8956-4137-8a0c-dc747c9c3bf3",
+                                  fit: BoxFit.cover))),
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                  colors: [
+                                lightmode.withOpacity(1),
+                                lightmode.withOpacity(1),
+                                lightmode.withOpacity(1),
+                                lightmode.withOpacity(1),
+                                lightmode.withOpacity(0.0),
+                                lightmode.withOpacity(0.0),
+                                lightmode.withOpacity(0.0),
+                                lightmode.withOpacity(0.0),
+                              ])),
+                        ),
+                      ),
+                      Consumer<MyThemeModel>(
+                          builder: (context, theme, child) => Positioned(
+                                bottom: 0,
+                                height: MediaQuery.of(context).size.width / 1 >
+                                        MediaQuery.of(context).size.height / 1
+                                    ? MediaQuery.of(context).size.height * 0.9
+                                    : MediaQuery.of(context).size.height *
+                                        0.775,
+                                width: MediaQuery.of(context).size.width,
+                                child: CarouselSlider(
+                                  options: CarouselOptions(
+                                    autoPlay:
+                                        theme.isAnimated == true ? true : false,
+                                    height: MediaQuery.of(context).size.height /
+                                        0.5,
+                                    autoPlayInterval:
+                                        const Duration(seconds: 3),
+                                    aspectRatio: 16 / 9,
+                                    viewportFraction:
+                                        MediaQuery.of(context).size.width / 1 >
+                                                MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    1
+                                            ? 0.6
+                                            : 0.70,
+                                    enlargeCenterPage: true,
+                                    onPageChanged: (index, reason) {
+                                      setState(() {
+                                        _current = index;
+                                      });
+                                    },
+                                  ),
+                                  carouselController: _carouselController,
+                                  items: rooms.map((movie) {
+                                    return Builder(
+                                      builder: (BuildContext context) {
+                                        int index = rooms.indexOf(movie);
+                                        final urls = rooms[index]['name']
+                                            .toString()
+                                            .toLowerCase();
+                                        return AnimatedOpacity(
+                                            duration: const Duration(
+                                                milliseconds: 500),
+                                            opacity: trans ? 1.0 : 0.0,
+                                            child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                                child: BackdropFilter(
+                                                    filter: ImageFilter.blur(
+                                                        sigmaX: 30, sigmaY: 30),
+                                                    child: Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                      margin: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 5.0),
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Colors.transparent,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                      ),
+                                                      child: Column(
+                                                        children: [
+                                                          Container(
+                                                              height: MediaQuery.of(
                                                                           context)
                                                                       .size
-                                                                      .width /
-                                                                  30,
-                                                              left: 10,
-                                                              right: 10),
-                                                          clipBehavior:
-                                                              Clip.hardEdge,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20),
-                                                          ),
-                                                          child:
-                                                              AnimatedOpacity(
-                                                                  duration: const Duration(
-                                                                      milliseconds:
-                                                                          1000),
-                                                                  opacity: _current ==
-                                                                          rooms.indexOf(movie)
-                                                                      ? 1.0
-                                                                      : 0.5,
-                                                                  child: GestureDetector(
-                                                                      onTap: () {
-                                                                        setState(
-                                                                            () {
-                                                                          trans =
-                                                                              false;
-                                                                        });
-                                                                        Navigator.of(context).pushNamed(
-                                                                            '/info',
-                                                                            arguments: {
+                                                                      .height /
+                                                                  2.5,
+                                                              margin: EdgeInsets.only(
+                                                                  top: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width /
+                                                                      30,
+                                                                  left: 10,
+                                                                  right: 10),
+                                                              clipBehavior:
+                                                                  Clip.hardEdge,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20),
+                                                              ),
+                                                              child:
+                                                                  AnimatedOpacity(
+                                                                      duration: const Duration(
+                                                                          milliseconds:
+                                                                              1000),
+                                                                      opacity: _current ==
+                                                                              rooms.indexOf(movie)
+                                                                          ? 1.0
+                                                                          : 0.5,
+                                                                      child: GestureDetector(
+                                                                          onTap: () {
+                                                                            setState(() {
+                                                                              trans = false;
+                                                                            });
+                                                                            Navigator.of(context).pushNamed('/info', arguments: {
                                                                               'name': sortedData[index]['name'],
                                                                               'index': _current,
                                                                               'trans': trans,
                                                                             });
-                                                                      },
-                                                                      child: Hero(tag: rooms[index]['name'], child: Image.asset("assets/rooms/${rooms[index]['name'].toLowerCase()}.png", fit: BoxFit.cover))))),
-                                                      const SizedBox(
-                                                        height: 20,
-                                                      ),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Text(
-                                                            "${rooms[rooms.indexOf(movie)]['name'] == "Hub Innovation" ? "Hub Innov'" : rooms[rooms.indexOf(movie)]['name']}",
-                                                            style: TextStyle(
-                                                                color: darkmode,
-                                                                fontSize: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .width /
-                                                                    18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
+                                                                          },
+                                                                          child: Hero(tag: rooms[index]['name'], child: CachedNetworkImage(placeholderFadeInDuration: const Duration(milliseconds: 50), imageUrl: "https://firebasestorage.googleapis.com/v0/b/oros-f490a.appspot.com/o/room%2F$urls.png?alt=media&token=f19ff22d-8956-4137-8a0c-dc747c9c3bf3", fit: BoxFit.cover))))),
                                                           const SizedBox(
-                                                            width: 10,
+                                                            height: 20,
                                                           ),
-                                                          ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius.circular(
-                                                                      50),
-                                                              child: Container(
-                                                                  height: MediaQuery.of(context)
-                                                                          .size
-                                                                          .width /
-                                                                      20,
-                                                                  width: MediaQuery.of(context)
-                                                                          .size
-                                                                          .width /
-                                                                      20,
-                                                                  color: rooms[index]['icon'] ==
-                                                                          "0"
-                                                                      ? const Color.fromARGB(
-                                                                          255,
-                                                                          255,
-                                                                          0,
-                                                                          0)
-                                                                      : const Color.fromRGBO(
-                                                                          0,
-                                                                          255,
-                                                                          8,
-                                                                          1)))
-                                                        ],
-                                                      ),
-                                                      const SizedBox(
-                                                        height: 20,
-                                                      ),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Shimmer.fromColors(
-                                                              period:
-                                                                  const Duration(
-                                                                      seconds:
-                                                                          5),
-                                                              baseColor: const Color
-                                                                      .fromARGB(
-                                                                  255,
-                                                                  152,
-                                                                  171,
-                                                                  180),
-                                                              highlightColor:
-                                                                  darkmode,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            500),
-                                                                child: Text(
-                                                                  "${rooms[index]['activity']}",
-                                                                  style: TextStyle(
-                                                                      color:
-                                                                          darkmode,
-                                                                      fontSize:
-                                                                          MediaQuery.of(context).size.width /
-                                                                              35,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
-                                                                ),
-                                                              ))
-                                                        ],
-                                                      ),
-                                                      const SizedBox(
-                                                        height: 20,
-                                                      ),
-                                                      AnimatedOpacity(
-                                                        duration:
-                                                            const Duration(
-                                                                milliseconds:
-                                                                    500),
-                                                        opacity: _current ==
-                                                                rooms.indexOf(
-                                                                    movie)
-                                                            ? 1.0
-                                                            : 0.0,
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            GestureDetector(
-                                                                onTap: () {
-                                                                  setState(() {
-                                                                    trans =
-                                                                        false;
-                                                                  });
-                                                                  Navigator.of(
-                                                                          context)
-                                                                      .pushNamed(
-                                                                          '/info',
-                                                                          arguments: {
-                                                                        'name': sortedData[index]
-                                                                            [
-                                                                            'name'],
-                                                                        'index':
-                                                                            _current,
-                                                                      });
-                                                                },
-                                                                child: Icon(
-                                                                  Icons.info,
-                                                                  color: Colors
-                                                                      .grey
-                                                                      .shade600,
-                                                                  size: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .width /
-                                                                      40,
-                                                                )),
-                                                            const SizedBox(
-                                                              width: 5,
-                                                            ),
-                                                            GestureDetector(
-                                                                onTap: () {
-                                                                  setState(() {
-                                                                    trans =
-                                                                        false;
-                                                                  });
-                                                                  Navigator.of(
-                                                                          context)
-                                                                      .pushNamed(
-                                                                          '/info',
-                                                                          arguments: {
-                                                                        'name': sortedData[index]
-                                                                            [
-                                                                            'name'],
-                                                                        'index':
-                                                                            _current,
-                                                                      });
-                                                                },
-                                                                child:
-                                                                    const Text(
-                                                                  "info",
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      color: Color.fromARGB(
-                                                                          255,
-                                                                          117,
-                                                                          117,
-                                                                          117)),
-                                                                )),
-                                                            const SizedBox(
-                                                              width: 10,
-                                                            ),
-                                                            rooms[index]['activity_title']
-                                                                        .toString() !=
-                                                                    ""
-                                                                ? Icon(
-                                                                    Icons
-                                                                        .access_time,
-                                                                    color: Colors
-                                                                        .grey
-                                                                        .shade600,
-                                                                    size: MediaQuery.of(context)
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Text(
+                                                                "${rooms[rooms.indexOf(movie)]['name'] == "Hub Innovation" ? "Hub Innov'" : rooms[rooms.indexOf(movie)]['name']}",
+                                                                style: TextStyle(
+                                                                    color:
+                                                                        darkmode,
+                                                                    fontSize: MediaQuery.of(context)
                                                                             .size
                                                                             .width /
-                                                                        40,
-                                                                  )
-                                                                : const SizedBox
-                                                                    .shrink(),
-                                                            const SizedBox(
-                                                                width: 5),
-                                                            Row(
+                                                                        18,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                              const SizedBox(
+                                                                width: 10,
+                                                              ),
+                                                              ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              50),
+                                                                  child: Container(
+                                                                      height: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width /
+                                                                          20,
+                                                                      width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width /
+                                                                          20,
+                                                                      color: rooms[index]['icon'] ==
+                                                                              "0"
+                                                                          ? const Color.fromARGB(
+                                                                              255,
+                                                                              255,
+                                                                              0,
+                                                                              0)
+                                                                          : const Color.fromRGBO(
+                                                                              0,
+                                                                              255,
+                                                                              8,
+                                                                              1)))
+                                                            ],
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 20,
+                                                          ),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Shimmer
+                                                                  .fromColors(
+                                                                      period: const Duration(
+                                                                          seconds:
+                                                                              5),
+                                                                      baseColor: const Color
+                                                                              .fromARGB(
+                                                                          255,
+                                                                          152,
+                                                                          171,
+                                                                          180),
+                                                                      highlightColor:
+                                                                          darkmode,
+                                                                      child:
+                                                                          ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(500),
+                                                                        child:
+                                                                            Text(
+                                                                          "${rooms[index]['activity']}",
+                                                                          style: TextStyle(
+                                                                              color: darkmode,
+                                                                              fontSize: MediaQuery.of(context).size.width / 35,
+                                                                              fontWeight: FontWeight.bold),
+                                                                        ),
+                                                                      ))
+                                                            ],
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 20,
+                                                          ),
+                                                          AnimatedOpacity(
+                                                            duration:
+                                                                const Duration(
+                                                                    milliseconds:
+                                                                        500),
+                                                            opacity: _current ==
+                                                                    rooms.indexOf(
+                                                                        movie)
+                                                                ? 1.0
+                                                                : 0.0,
+                                                            child: Row(
                                                               mainAxisAlignment:
                                                                   MainAxisAlignment
-                                                                      .start,
+                                                                      .center,
                                                               children: [
-                                                                Text(
-                                                                  "${rooms[index]['activity_title']}",
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      color: Colors
-                                                                          .grey
-                                                                          .shade600),
-                                                                  maxLines: 1,
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
+                                                                rooms[index]['activity_title']
+                                                                            .toString() ==
+                                                                        ""
+                                                                    ? GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          setState(
+                                                                              () {
+                                                                            trans =
+                                                                                false;
+                                                                          });
+                                                                          Navigator.of(context).pushNamed(
+                                                                              '/info',
+                                                                              arguments: {
+                                                                                'name': sortedData[index]['name'],
+                                                                                'index': _current,
+                                                                              });
+                                                                        },
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .info,
+                                                                          color: Colors
+                                                                              .grey
+                                                                              .shade600,
+                                                                          size: MediaQuery.of(context).size.width /
+                                                                              40,
+                                                                        ))
+                                                                    // ignore: prefer_const_constructors
+                                                                    : SizedBox
+                                                                        .shrink(),
+                                                                const SizedBox(
+                                                                  width: 5,
                                                                 ),
+                                                                rooms[index]['activity_title']
+                                                                            .toString() ==
+                                                                        ""
+                                                                    ? GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          setState(
+                                                                              () {
+                                                                            trans =
+                                                                                false;
+                                                                          });
+                                                                          Navigator.of(context).pushNamed(
+                                                                              '/info',
+                                                                              arguments: {
+                                                                                'name': sortedData[index]['name'],
+                                                                                'index': _current,
+                                                                              });
+                                                                        },
+                                                                        child:
+                                                                            const Text(
+                                                                          "info",
+                                                                          style: TextStyle(
+                                                                              fontSize: 14.0,
+                                                                              color: Color.fromARGB(255, 117, 117, 117)),
+                                                                        ))
+                                                                    : const SizedBox
+                                                                        .shrink(),
+                                                                const SizedBox(
+                                                                  width: 10,
+                                                                ),
+                                                                rooms[index]['activity_title']
+                                                                            .toString() !=
+                                                                        ""
+                                                                    ? Icon(
+                                                                        Icons
+                                                                            .access_time,
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .shade600,
+                                                                        size: MediaQuery.of(context).size.width /
+                                                                            40,
+                                                                      )
+                                                                    : const SizedBox
+                                                                        .shrink(),
+                                                                const SizedBox(
+                                                                    width: 5),
+                                                                Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Text(
+                                                                      "${rooms[index]['activity_title']}",
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              14.0,
+                                                                          color: Colors
+                                                                              .grey
+                                                                              .shade600),
+                                                                      maxLines:
+                                                                          1,
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                    ),
+                                                                  ],
+                                                                )
                                                               ],
-                                                            )
-                                                          ],
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ))));
-                                  },
-                                );
-                              }).toList(),
-                            ),
-                          )),
-                ],
-              ),
-            ),
-          ));
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ))));
+                                      },
+                                    );
+                                  }).toList(),
+                                ),
+                              )),
+                    ],
+                  ),
+                ),
+              )));
     });
   }
 }

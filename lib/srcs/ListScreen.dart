@@ -1,18 +1,14 @@
 // ignore_for_file: file_names, prefer_const_constructors
-
-import 'dart:html';
-import 'dart:io';
-import 'dart:ui';
-import 'package:animate_do/animate_do.dart';
 import 'package:awesome_icons/awesome_icons.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:epitech/main.dart';
 import 'package:epitech/model/localData.dart';
+import 'package:epitech/utilities/utility.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
-import '../utilities/utility.dart';
 
 class MyHomePage extends StatefulWidget {
   final dynamic jsonData;
@@ -32,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     if (trans == false) {
-      Future.delayed(const Duration(seconds: 2)).then((trans) {
+      Future.delayed(const Duration(milliseconds: 100)).then((trans) {
         setState(() {
           trans = true;
         });
@@ -41,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // ignore: no_leading_underscores_for_local_identifiers
     DateTime now = DateTime.now();
-    DateFormat dateFormat = DateFormat("HH'h'mm");
+    DateFormat dateFormat = DateFormat("HH':'mm");
     Duration sub = const Duration(hours: 1);
 
     List<Map<String, dynamic>> rooms = [];
@@ -76,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
             rooms.add({
               'name': element['name'],
               'activity':
-                  "Occupé jusqu'à: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(activity['end_at']).subtract(sub))}",
+                  "Occupé jusqu'à : ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(activity['end_at']).subtract(sub))}",
               'activity_title': 'En cours : ${activity['activity_title']}',
               'module_title': '${activity['module_title']}',
               'module_code': '${activity['module_code']}',
@@ -91,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
             rooms.add({
               'name': element['name'],
               'activity':
-                  "Libre jusqu'à: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(activity['start_at']).subtract(sub))}",
+                  "Libre jusqu'à : ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(activity['start_at']).subtract(sub))}",
               'activity_title': 'Bientôt : ${activity['activity_title']}',
               'module_title': '${activity['module_title']}',
               'module_code': '${activity['module_code']}',
@@ -117,14 +113,20 @@ class _MyHomePageState extends State<MyHomePage> {
         });
       }
     }
-    bool isweb = true;
     downLoad(url) {
-      AnchorElement anchorElement = new AnchorElement(href: url);
-      anchorElement.download = "Oros.exe";
-      anchorElement.click();
+      // AnchorElement anchorElement = nBye tu vois ça fait une 23Bye tu vois ça fait une 23ew AnchorElement(href: url);
+      // anchorElement.download = "Oros.exe";
+      // anchorElement.click();
     }
 
-    return Consumer2<MyThemeModeModel, MyThemeSettingsModel>(
+    return GestureDetector(onHorizontalDragUpdate: (details) {
+      if (details.delta.dx > 0) {
+        setState(() {
+          trans = true;
+          Navigator.of(context).pop();
+        });
+      }
+    }, child: Consumer2<MyThemeModeModel, MyThemeSettingsModel>(
         builder: (context, mode, settings, child) {
       final lightmode = settings.isSettingsTheme == true
           ? MediaQuery.of(context).platformBrightness == Brightness.dark
@@ -150,9 +152,13 @@ class _MyHomePageState extends State<MyHomePage> {
               : Colors.black;
       return Scaffold(
           backgroundColor: lightmode,
+          appBar: AppBar(
+            backgroundColor: lightmode,
+            leading: BackButton(color: darkmode),
+          ),
           body: Row(
             children: [
-              isweb
+              kIsWeb
                   ? ClipRRect(
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.zero,
@@ -236,7 +242,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isweb = false;
                                   });
                                 },
                                 child: Icon(
@@ -250,7 +255,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isweb = false;
                                   });
                                 },
                                 child: Text(
@@ -345,19 +349,31 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Hero(
                                       tag: rooms[index]['name'],
                                       child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            "assets/rooms/${rooms[index]['name'].toLowerCase()}.png",
-                                            fit: BoxFit.cover,
-                                            height: 100,
-                                            width: 250,
-                                          )))),
+                                          borderRadius: BorderRadius.circular(
+                                              kIsWeb ? 20 : 5),
+                                          child: kIsWeb
+                                              ? CachedNetworkImage(
+                                                  placeholderFadeInDuration:
+                                                      const Duration(
+                                                          milliseconds: 50),
+                                                  imageUrl:
+                                                      "https://firebasestorage.googleapis.com/v0/b/oros-f490a.appspot.com/o/room%2F${rooms[index]['name'].toLowerCase()}.png?alt=media&token=f19ff22d-8956-4137-8a0c-dc747c9c3bf3",
+                                                  fit: BoxFit.cover)
+                                              : SizedBox(
+                                                  height: 70,
+                                                  width: 150,
+                                                  child: CachedNetworkImage(
+                                                      placeholderFadeInDuration:
+                                                          const Duration(
+                                                              milliseconds: 50),
+                                                      imageUrl:
+                                                          "https://firebasestorage.googleapis.com/v0/b/oros-f490a.appspot.com/o/room%2F${rooms[index]['name'].toLowerCase()}.png?alt=media&token=f19ff22d-8956-4137-8a0c-dc747c9c3bf3",
+                                                      fit: BoxFit.cover))))),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   const SizedBox(
-                                    width: 20,
+                                    width: kIsWeb ? 20 : 40,
                                   ),
                                   SizedBox(
                                       width:
@@ -366,10 +382,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                         "${rooms[index]['name'] == "Hub Innovation" ? "Hub Innov'" : rooms[index]['name']}",
                                         style: TextStyle(
                                             color: darkmode,
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                30,
+                                            fontSize: kIsWeb
+                                                ? MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    30
+                                                : MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    20,
                                             fontWeight: FontWeight.bold),
                                       )),
                                 ],
@@ -377,35 +398,65 @@ class _MyHomePageState extends State<MyHomePage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Shimmer.fromColors(
-                                      period: const Duration(seconds: 5),
-                                      baseColor: const Color.fromARGB(
-                                          255, 152, 171, 180),
-                                      highlightColor: darkmode,
-                                      child: Text(
-                                        "${rooms[index]['activity']}",
-                                        style: TextStyle(
-                                            color: darkmode,
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                55,
-                                            fontWeight: FontWeight.bold),
-                                      )),
+                                  kIsWeb
+                                      ? Column(
+                                          children: [
+                                            Shimmer.fromColors(
+                                                period:
+                                                    const Duration(seconds: 5),
+                                                baseColor: const Color.fromARGB(
+                                                    255, 152, 171, 180),
+                                                highlightColor: darkmode,
+                                                child: SizedBox(
+                                                    width: 400,
+                                                    child: Text(
+                                                      "${rooms[index]['activity']}",
+                                                      style: TextStyle(
+                                                          color: darkmode,
+                                                          fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width /
+                                                              55,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ))),
+                                            Text(
+                                              "${rooms[index]['activity_title']}",
+                                              style: TextStyle(
+                                                  fontSize: 14.0,
+                                                  color: Colors.grey.shade600),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        )
+                                      : SizedBox.shrink(),
                                   SizedBox(
-                                    width: 50,
+                                    width: kIsWeb ? 50 : 20,
                                   ),
                                   ClipRRect(
                                       borderRadius: BorderRadius.circular(50),
                                       child: Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              20,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              20,
+                                          height: kIsWeb
+                                              ? MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  20
+                                              : MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  15,
+                                          width:
+                                              kIsWeb
+                                                  ? MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      20
+                                                  : MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      15,
                                           color: rooms[index]['icon'] == "0"
                                               ? const Color.fromARGB(
                                                   255, 255, 0, 0)
@@ -413,23 +464,26 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   0, 255, 8, 1)))
                                 ],
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    "${rooms[index]['activity_title']}",
-                                    style: TextStyle(
-                                        fontSize: 14.0,
-                                        color: Colors.grey.shade600),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
-                              )
+                              const SizedBox(
+                                width: kIsWeb ? 0 : 20,
+                              ),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.end,
+                              //   children: [
+                              //     Text(
+                              //       "${rooms[index]['activity_title']}",
+                              //       style: TextStyle(
+                              //           fontSize: 14.0,
+                              //           color: Colors.grey.shade600),
+                              //       maxLines: 1,
+                              //       overflow: TextOverflow.ellipsis,
+                              //     ),
+                              //   ],
+                              // )
                             ],
                           ))))
             ],
           ));
-    });
+    }));
   }
 }

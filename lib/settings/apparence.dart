@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_string_interpolations
 import 'dart:io';
 import 'dart:ui';
-import 'package:awesome_icons/awesome_icons.dart';
 import 'package:epitech/model/localData.dart';
 import 'package:epitech/utilities/utility.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,21 +27,6 @@ class _ApparenceState extends State<Apparence> {
               ? Color(0xfff2f2f6)
               : Colors.black;
 
-      final lightmode = settings.isSettingsTheme == true
-          ? MediaQuery.of(context).platformBrightness == Brightness.light
-              ? Colors.black
-              : Colors.white
-          : mode.isModeTheme == false
-              ? Colors.white
-              : Colors.black;
-
-      final darkmodes = settings.isSettingsTheme == true
-          ? MediaQuery.of(context).platformBrightness == Brightness.light
-              ? Colors.white
-              : Color(0xff1c1c1e)
-          : mode.isModeTheme == true
-              ? Colors.white
-              : Color(0xff1c1c1e);
       return Scaffold(
           extendBodyBehindAppBar: true,
           backgroundColor: darkmode,

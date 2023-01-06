@@ -1,4 +1,6 @@
 
+// ignore_for_file: file_names, prefer_if_null_operators, duplicate_ignore
+
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,6 +18,7 @@ class MyThemeSettingsModel extends ChangeNotifier {
   }
 
   bool? get isSettingsTheme {
+    // ignore: prefer_if_null_operators
     return sharedPreferences.getBool('themessss') != null
         ? sharedPreferences.getBool('themessss')
         : _isLightTheme;

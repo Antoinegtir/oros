@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     if (splash == false) {
-      Future.delayed(const Duration(seconds: 2)).then((_) {
+      Future.delayed(const Duration(milliseconds: 500)).then((_) {
         setState(() {
           splash = true;
         });
@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ],
                     ))),
             FadeInUp(
-                duration: const Duration(seconds: 2),
+                duration: const Duration(milliseconds: 500),
                 child: Text(
                   "Oros",
                   style: TextStyle(

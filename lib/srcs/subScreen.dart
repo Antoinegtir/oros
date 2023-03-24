@@ -1,12 +1,15 @@
 // ignore_for_file: file_names
+import 'dart:io';
 import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:epitech/main.dart';
 import 'package:epitech/model/localData.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SubPage extends StatefulWidget {
   final dynamic jsonData;
@@ -77,6 +80,15 @@ class _SubPageState extends State<SubPage> with SingleTickerProviderStateMixin {
               : Colors.white
           : mode.isModeTheme == true
               ? Colors.black
+              : Colors.white;
+
+      final colors =
+          MediaQuery.of(context).platformBrightness == Brightness.dark
+              ? Color.fromARGB(255, 50, 50, 50)
+              : Colors.white;
+      final colorss =
+          MediaQuery.of(context).platformBrightness == Brightness.light
+              ? Color.fromARGB(255, 57, 57, 57)
               : Colors.white;
       return WillPopScope(
           onWillPop: () {
@@ -192,6 +204,7 @@ class _SubPageState extends State<SubPage> with SingleTickerProviderStateMixin {
                             ];
                           },
                           body: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               // ignore: prefer_const_literals_to_create_immutables
                               children: [
                                 TabBar(
@@ -224,31 +237,25 @@ class _SubPageState extends State<SubPage> with SingleTickerProviderStateMixin {
                                     ),
                                   ],
                                 ),
-                                Container(
-                                  height: 20,
-                                ),
                                 Expanded(
                                     child: TabBarView(
                                   controller: _tabController,
                                   children: [
-                                    Column(
+                                    ListView(
                                       children: [
-                                        Container(
-                                          height: 20,
-                                        ),
                                         activities.length == 0
                                             ? SizedBox(
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .height /
-                                                    3,
+                                                    5,
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width /
                                                     1,
                                                 child: Center(
                                                     child: Text(
-                                                  "Aucune activitée\n dans cette salle\n n'a été identifié",
+                                                  "Aucune activitée\n dans cette salle\n n'a été identifiée",
                                                   style: TextStyle(
                                                       fontSize: 35,
                                                       color: darkmode,
@@ -259,32 +266,172 @@ class _SubPageState extends State<SubPage> with SingleTickerProviderStateMixin {
                                         for (int i = 0;
                                             i < activities.length;
                                             i++)
-                                          Expanded(
-                                              child: Column(
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
-                                              ListTile(
-                                                subtitle: Text(
-                                                  // ignore: prefer_if_null_operators
-                                                  "${sortedData[index]['activities'][i]['module_title'] == null ? "" : sortedData[index]['activities'][i]['module_title']} , ${sortedData[index]['activities'][i]['module_code'] == null ? "" : sortedData[index]['activities'][i]['module_code']} , ${sortedData[index]['activities'][i]['type'] == null ? "" : sortedData[index]['activities'][i]['type']}",
-                                                  style: TextStyle(
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      color: darkmode,
-                                                      fontWeight:
-                                                          FontWeight.w100),
-                                                ),
-                                                title: Text(
-                                                  "${sortedData[index]['activities'][i]['activity_title']} : ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(sortedData[index]['activities'][i]['start_at']).subtract(sub))} - ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(sortedData[index]['activities'][i]['end_at']).subtract(sub))}",
-                                                  style: TextStyle(
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      color: darkmode,
-                                                      fontWeight:
-                                                          FontWeight.w900),
-                                                ),
-                                              )
+                                              Container(
+                                                height: 30,
+                                              ),
+                                              Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      1.1,
+                                                  decoration: BoxDecoration(
+                                                      color: lightmode,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      border: Border.all(
+                                                          color: darkmode,
+                                                          width: 1)),
+                                                  child: ListTile(
+                                                    subtitle: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        GestureDetector(
+                                                            onTap: () {
+                                                              Platform.isIOS
+                                                                  ? showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (_) =>
+                                                                              CupertinoAlertDialog(
+                                                                                title: const Text("Information"),
+                                                                                content: const Text("Seulement une petite partie de la salle est occupé vous pouvez donc vous y installé sans deranger 😊 "),
+                                                                                actions: [
+                                                                                  // ignore: deprecated_member_use
+                                                                                  CupertinoDialogAction(
+                                                                                    onPressed: () {
+                                                                                      Navigator.pop(context);
+                                                                                    },
+                                                                                    child: const Text(
+                                                                                      "D'accord!",
+                                                                                      style: TextStyle(
+                                                                                        color: Color.fromARGB(255, 25, 191, 0),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ],
+                                                                              ))
+                                                                  : showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (_) =>
+                                                                              AlertDialog(
+                                                                        contentPadding: EdgeInsets.only(
+                                                                            right:
+                                                                                50,
+                                                                            left:
+                                                                                50,
+                                                                            top:
+                                                                                20,
+                                                                            bottom:
+                                                                                20),
+                                                                        shape: RoundedRectangleBorder(
+                                                                            borderRadius:
+                                                                                BorderRadius.all(Radius.circular(40))),
+                                                                        backgroundColor:
+                                                                            colors,
+                                                                        title:
+                                                                            Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          children: [
+                                                                            Text(
+                                                                              "Info",
+                                                                              style: TextStyle(color: colorss, fontSize: 30, fontWeight: FontWeight.w600),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        content:
+                                                                            Text(
+                                                                          'Seulement une petite partie de la salle est occupé vous pouvez donc vous y installé sans deranger 😊 ',
+                                                                          style: TextStyle(
+                                                                              color: Color.fromARGB(255, 198, 198, 198),
+                                                                              fontSize: 15,
+                                                                              fontWeight: FontWeight.w100),
+                                                                        ),
+                                                                        actions: [
+                                                                          // ignore: deprecated_member_use
+
+                                                                          GestureDetector(
+                                                                              onTap: () {
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                              child: Row(
+                                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                                children: [
+                                                                                  Text("Confirm\n", style: TextStyle(color: colorss, fontWeight: FontWeight.w700, fontSize: 14))
+                                                                                ],
+                                                                              )),
+                                                                        ],
+                                                                      ),
+                                                                    );
+                                                            },
+                                                            child: Shimmer
+                                                                .fromColors(
+                                                              period:
+                                                                  const Duration(
+                                                                      seconds:
+                                                                          5),
+                                                              baseColor: const Color
+                                                                      .fromARGB(
+                                                                  255,
+                                                                  50,
+                                                                  255,
+                                                                  18),
+                                                              highlightColor:
+                                                                  Colors.red,
+                                                              child: Text(
+                                                                  // ignore: prefer_if_null_operators
+                                                                  "${sortedData[index]['activities'][i]['oros_tags'].toString() != "[]" ? "Partiellement occupé" : ""}\n ",
+                                                                  style: TextStyle(
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .clip,
+                                                                      color:
+                                                                          darkmode,
+                                                                      fontSize:
+                                                                          16,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500)),
+                                                            )),
+                                                        Text(
+                                                          // ignore: prefer_if_null_operators
+                                                          "${sortedData[index]['activities'][i]['module_title'] == null ? "" : sortedData[index]['activities'][i]['module_title']} , ${sortedData[index]['activities'][i]['module_code'] == null ? "" : sortedData[index]['activities'][i]['module_code']} , ${sortedData[index]['activities'][i]['type'] == null ? "" : sortedData[index]['activities'][i]['type']}\n",
+                                                          style: TextStyle(
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .clip,
+                                                              color: darkmode,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w100),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    title: Text(
+                                                      "\n${sortedData[index]['activities'][i]['activity_title']} : ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(sortedData[index]['activities'][i]['start_at']).subtract(sub))} - ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(sortedData[index]['activities'][i]['end_at']).subtract(sub))}\n",
+                                                      style: TextStyle(
+                                                          overflow:
+                                                              TextOverflow.clip,
+                                                          color: darkmode,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    ),
+                                                  ))
                                             ],
-                                          ))
+                                          )
                                       ],
                                     ),
                                     Padding(

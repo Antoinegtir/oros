@@ -1,5 +1,5 @@
 <a href="https://test-bdb24.web.app">
-  <img width="100%" alt="Kams Banner" src="https://github.com/Antoinegtir/Oros/assets/blob/banner.png">
+  <img width="100%" alt="Kams Banner" src="https://github.com/Antoinegtir/Oros/blob/main/assets/oros.png?raw=true">
 </a>
 
 # Oros
@@ -14,9 +14,9 @@ On the application you can:
 
 # Download
 
-Android               |  iOS               | MacOS               |  TvOS | Windows | Web | Linux
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-[<img src="https://github.com/Kams-art/Assets/blob/main/logo/android/download.png" alt="Welcome Page" width="150"/>](https://play.google.com/store/apps/details?id=com.AntoineGonthier.kams&hl=fr&gl=US)|[![](https://github.com/Kams-art/Assets/blob/main/logo/ios/download.svg)](https://apps.apple.com/lk/app/kams/id1616390258)|[![](https://github.com/Kams-art/Assets/blob/main/logo/macos/download.svg)](https://apps.apple.com/lk/app/kams/id1616390258)|[![](https://github.com/Kams-art/Assets/blob/main/logo/tvos/download.svg)](https://apps.apple.com/lk/app/kams/id1616390258)|[<img src="https://github.com/Kams-art/Assets/blob/main/logo/windows/download.png" alt="Welcome Page" width="140"/>](https://nfts-a5f24.firebaseapp.com/#SplashPage)|[<img src="https://github.com/Kams-art/Assets/blob/main/logo/web/download.png" alt="Welcome Page" width="140"/>](https://nfts-a5f24.firebaseapp.com/#SplashPage)| 🚧
+Android               |  iOS               | MacOS               |   Windows | Web | Linux
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+[<img src="https://github.com/Kams-art/Assets/blob/main/logo/android/download.png" alt="Welcome Page" width="150"/>](https://play.google.com/store/apps/details?id=com.oros.epitech&hl=en_US)|[![](https://github.com/Kams-art/Assets/blob/main/logo/ios/download.svg)](https://apps.apple.com/fr/app/oros/id1661996262)|[![](https://github.com/Kams-art/Assets/blob/main/logo/macos/download.svg)](https://apps.apple.com/fr/app/oros/id1661996262)|[<img src="https://github.com/Kams-art/Assets/blob/main/logo/windows/download.png" alt="Welcome Page" width="140"/>](https://raw.githubusercontent.com/Antoinegtir/Oros/0f34a74e8e1986a1799190b68b10230cf45ae2c2/assets/Oros.exe)|[<img src="https://github.com/Kams-art/Assets/blob/main/logo/web/download.png" alt="Welcome Page" width="140"/>](https://test-bdb24.web.app)| 🚧
 
 # Language
 <a href="https://kams-art.com">
@@ -25,26 +25,11 @@ Android               |  iOS               | MacOS               |  TvOS | Windo
 
 # Framework
 <a href="https://kams-art.com">
-<img src="https://skillicons.dev/icons?i=flutter,express,tensorflow" /></a>
-
-# ML
-<a href="https://kams-art.com">
-<img src="https://skillicons.dev/icons?i=googlecloud,python" /></a>
+<img src="https://skillicons.dev/icons?i=flutter" /></a>
 
 # Back-end
 
 <a href ="https://console.firebase.google.com/"><img height="30" src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/firebase/firebase-plain.svg"></a>&nbsp;
-<a href =""><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg"></a>&nbsp;
-<a href =""><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg"></a>&nbsp;
-<a href ="https://graphql.org/"><img height="30" src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/graphql/graphql-plain.svg"></a>&nbsp;
-<a href =""><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/sqlite/sqlite-original.svg"></a>&nbsp;
-<a href =""><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/rails/rails-plain.svg"></a>&nbsp;
-<a href =""><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/digitalocean/digitalocean-original.svg"></a>&nbsp;
-
-# Dev-Ops
-<a href =""><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-plain.svg"></a>&nbsp;
-<a href =""><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/kubernetes/kubernetes-plain.svg"></a>&nbsp;
-<a href =""><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/travis/travis-plain.svg"></a>&nbsp;
 
 # Supervisor
 
@@ -58,12 +43,11 @@ Android               |  iOS               | MacOS               |  TvOS | Windo
 <a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/androidstudio/androidstudio-original.svg"></a>&nbsp;
 <a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/groovy/groovy-original.svg"></a>&nbsp;
 
-
 # Credit
   
-Antoine Gonthier, 18 yo CEO & Founder at Kams and Epitech Student 🧑‍💻
+Antoine Gonthier, 18 yo Epitech Student 🧑‍💻
   
 # License
 
 - This application is released under the MIT license and respect all the statment of the copyright
-- Copyright © 2023 Kams Corporation, All right reseved.
+- Copyright © 2023, All right reseved.

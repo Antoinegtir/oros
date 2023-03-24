@@ -1,5 +1,5 @@
 <a href="https://test-bdb24.web.app">
-  <img width="70%" alt="Kams Banner" src="https://github.com/Antoinegtir/Oros/blob/main/assets/oros.png?raw=true">
+  <img width="100%" alt="Kams Banner" src="https://github.com/Antoinegtir/Oros/blob/main/assets/oros.png?raw=true">
 </a>
 
 # Oros

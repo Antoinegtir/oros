@@ -647,24 +647,31 @@ class _MyHomePagesState extends State<MyHomePages> {
               'module_title': '${activity['module_title']}',
               'module_code': '${activity['module_code']}',
               'type': '${activity['type']}',
+              'oros_tags': '${activity['oros_tags']}',
               'status': '0',
               'icon': '0'
             });
             foundActivity = true;
             break;
           }
-          if (activity['end_at'] > now.millisecondsSinceEpoch) {
-            rooms.add({
-              'name': element['name'],
-              'activity':
-                  "Libre jusqu'à: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(activity['start_at']).subtract(sub))}",
-              'activity_title': 'Bientôt : ${activity['activity_title']}',
-              'module_title': '${activity['module_title']}',
-              'module_code': '${activity['module_code']}',
-              'type': '${activity['type']}',
-              'status': '1',
-              'icon': '1'
-            });
+          if (activity['start_at'] > now.millisecondsSinceEpoch) {
+           activity['activity_title'].toString().contains("Matheo") 
+                    ? rooms
+                    : rooms.add({
+                        'name': element['name'],
+                        'activity':
+                            "Libre jusqu'à: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(activity['start_at']).subtract(sub))}",
+                        'activity_title':
+                            'Bientôt : ${activity['activity_title']}',
+                        'module_title': '${activity['module_title']}',
+                        'module_code': '${activity['module_code']}',
+                        'type': '${activity['type']}',
+                        'oros_tags': '${activity['oros_tags']}',
+                        'status': '1',
+                        'icon': activity['oros_tags'].toString() == "[]"
+                            ? "2"
+                            : "3",
+                      });
             foundActivity = true;
             break;
           }
@@ -678,7 +685,7 @@ class _MyHomePagesState extends State<MyHomePages> {
           'module_title': '',
           'module_code': '',
           'status': '1',
-          'icon': '2',
+          'icon': '1',
           'type': ''
         });
       }
@@ -927,26 +934,14 @@ class _MyHomePagesState extends State<MyHomePages> {
                                                                           .circular(
                                                                               50),
                                                                   child: Container(
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width /
-                                                                          20,
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width /
-                                                                          20,
-                                                                      color: rooms[index]['icon'] ==
-                                                                              "0"
-                                                                          ? const Color.fromARGB(
-                                                                              255,
-                                                                              255,
-                                                                              0,
-                                                                              0)
-                                                                          : const Color.fromRGBO(
-                                                                              0,
-                                                                              255,
-                                                                              8,
-                                                                              1)))
+                                                                      child: rooms[index]['icon'] == "3" ? Image.asset("assets/dalll.png") : SizedBox.shrink(),
+                                                                      height: MediaQuery.of(context).size.width / 20,
+                                                                      width: MediaQuery.of(context).size.width / 20,
+                                                                      color: rooms[index]['icon'] == "2"
+                                                                          ? Color.fromARGB(255, 255, 255, 0)
+                                                                          : rooms[index]['icon'] == "0"
+                                                                              ? const Color.fromARGB(255, 255, 0, 0)
+                                                                              : const Color.fromRGBO(0, 255, 8, 1)))
                                                             ],
                                                           ),
                                                           const SizedBox(

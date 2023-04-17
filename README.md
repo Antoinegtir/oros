@@ -1,5 +1,5 @@
 <a href="https://test-bdb24.web.app">
-  <img width="100%" alt="Kams Banner" src="https://github.com/Antoinegtir/Oros/blob/main/assets/oros.png?raw=true">
+  <img width="100%" alt="Oros Banner" src="https://github.com/Antoinegtir/Oros/blob/main/assets/oros.png?raw=true">
 </a>
 
 # Oros
@@ -19,13 +19,10 @@ Android               |  iOS               | MacOS               |   Windows | W
 [<img src="https://github.com/Kams-art/Assets/blob/main/logo/android/download.png" alt="Welcome Page" width="150"/>](https://play.google.com/store/apps/details?id=com.oros.epitech&hl=en_US)|[![](https://github.com/Kams-art/Assets/blob/main/logo/ios/download.svg)](https://apps.apple.com/fr/app/oros/id1661996262)|[![](https://github.com/Kams-art/Assets/blob/main/logo/macos/download.svg)](https://apps.apple.com/fr/app/oros/id1661996262)|[<img src="https://github.com/Kams-art/Assets/blob/main/logo/windows/download.png" alt="Welcome Page" width="140"/>](https://raw.githubusercontent.com/Antoinegtir/Oros/0f34a74e8e1986a1799190b68b10230cf45ae2c2/assets/Oros.exe)|[<img src="https://github.com/Kams-art/Assets/blob/main/logo/web/download.png" alt="Welcome Page" width="140"/>](https://test-bdb24.web.app)| 🚧
 
 # Language
-<a href="https://kams-art.com">
 <img src="https://skillicons.dev/icons?i=ruby,dart,kotlin,swift,html,css,bash,gradle" />
-                                                                                     </a>
 
 # Framework
-<a href="https://kams-art.com">
-<img src="https://skillicons.dev/icons?i=flutter" /></a>
+<img src="https://skillicons.dev/icons?i=flutter" />
 
 # Back-end
 
@@ -33,15 +30,15 @@ Android               |  iOS               | MacOS               |   Windows | W
 
 # Supervisor
 
-<a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/apache/apache-original.svg"></a>&nbsp;
-<a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/cmake/cmake-original.svg"></a>&nbsp;
-<a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/opengl/opengl-plain.svg"></a>&nbsp;
-<a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/eslint/eslint-original.svg"></a>&nbsp;
-<a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/git/git-original.svg"></a>&nbsp;
-<a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original.svg"></a>&nbsp;
-<a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/xcode/xcode-original.svg"></a>&nbsp;
-<a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/androidstudio/androidstudio-original.svg"></a>&nbsp;
-<a href ="https://kams-art.com"><img height="30" src="https://github.com/devicons/devicon/blob/master/icons/groovy/groovy-original.svg"></a>&nbsp;
+<img height="30" src="https://github.com/devicons/devicon/blob/master/icons/apache/apache-original.svg">&nbsp;
+<img height="30" src="https://github.com/devicons/devicon/blob/master/icons/cmake/cmake-original.svg">&nbsp;
+<img height="30" src="https://github.com/devicons/devicon/blob/master/icons/opengl/opengl-plain.svg">&nbsp;
+<img height="30" src="https://github.com/devicons/devicon/blob/master/icons/eslint/eslint-original.svg">&nbsp;
+<img height="30" src="https://github.com/devicons/devicon/blob/master/icons/git/git-original.svg">&nbsp;
+<img height="30" src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original.svg">&nbsp;
+<img height="30" src="https://github.com/devicons/devicon/blob/master/icons/xcode/xcode-original.svg">&nbsp;
+<img height="30" src="https://github.com/devicons/devicon/blob/master/icons/androidstudio/androidstudio-original.svg">&nbsp;
+<img height="30" src="https://github.com/devicons/devicon/blob/master/icons/groovy/groovy-original.svg">&nbsp;
 
 # Credit
   

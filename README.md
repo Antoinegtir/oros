@@ -27,7 +27,7 @@ Home Page               |  Detail Room
 
 ## Language & Tools used:
 
-<img src="https://skillicons.dev/icons?i=flutter,dart"/>
+<img src="https://skillicons.dev/icons?i=flutter,dart,vercel,firebase"/>
 
 ## Aivailable on:
 iOS, Android, Web

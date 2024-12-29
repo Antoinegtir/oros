@@ -277,19 +277,22 @@ class HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       if (room.value.forceClosed) ...[
-                                        Row(
-                                          children: [
-                                            Container(
-                                              width: 12.2,
-                                              child: Text('🚧'),
-                                            ),
-                                            sw(10),
-                                            Icon(
-                                              Icons.arrow_forward_ios,
-                                              color: Colors.grey,
-                                              size: 14,
-                                            ),
-                                          ],
+                                        Container(
+                                          height: 20,
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                width: 12.2,
+                                                child: Text('🚧'),
+                                              ),
+                                              sw(10),
+                                              Icon(
+                                                Icons.arrow_forward_ios,
+                                                color: Colors.grey,
+                                                size: 14,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ] else ...[
                                         Row(

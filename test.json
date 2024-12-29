@@ -1,16 +1,281 @@
 {
-    "name": "Rez-de-chaussée haut",
-    "colors": {
-        "header": "#823536",
-        "row_odd": "#F8EDED",
-        "row_even": "#E0B8B8"
-    },
-    "rooms": {
-        "Binder": {
-            "activities": [],
-            "hide_if_free": true,
-            "force_closed": false,
-            "force_closed_message": ""
-        }
+    "data": {
+        "data_source": "LIVE",
+        "room_activities": [
+            {
+                "name": "3e étage",
+                "colors": {
+                    "header": "#101C74",
+                    "row_odd": "#E8EAFD",
+                    "row_even": "#C9CCE9"
+                },
+                "rooms": {
+                    "Asgard": {
+                        "activities": [],
+                        "hide_if_free": false,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Krypton": {
+                        "activities": [],
+                        "hide_if_free": false,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Wakanda": {
+                        "activities": [],
+                        "hide_if_free": false,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    }
+                }
+            },
+            {
+                "name": "2e étage",
+                "colors": {
+                    "header": "#C4862C",
+                    "row_odd": "#FFF0DC",
+                    "row_even": "#EFD2A9"
+                },
+                "rooms": {}
+            },
+            {
+                "name": "1er étage",
+                "colors": {
+                    "header": "#107464",
+                    "row_odd": "#EBFAF7",
+                    "row_even": "#AEEAE1"
+                },
+                "rooms": {
+                    "Arya Stark": {
+                        "activities": [
+                            {
+                                "activity_title": "Cold Case",
+                                "module_title": "G0 - English - Fundamentals",
+                                "module_code": "G-ENG-010",
+                                "start_at": 1730192400000,
+                                "end_at": 1730199600000,
+                                "oros_tags": [],
+                                "type": "tp"
+                            },
+                            {
+                                "activity_title": "JAE",
+                                "start_at": 1730206800000,
+                                "end_at": 1730214000000,
+                                "oros_tags": []
+                            },
+                            {
+                                "activity_title": "Point R-Type",
+                                "start_at": 1730215800000,
+                                "end_at": 1730217600000,
+                                "oros_tags": []
+                            }
+                        ],
+                        "hide_if_free": true,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Batman": {
+                        "activities": [
+                            {
+                                "activity_title": "Point voeux Tech4",
+                                "module_title": "G5 - Administrative Meetings",
+                                "module_code": "B-ADM-500",
+                                "start_at": 1730185200000,
+                                "end_at": 1730199600000,
+                                "oros_tags": [],
+                                "type": "rdv"
+                            },
+                            {
+                                "activity_title": "Delivery - Choosing a tech4 destination",
+                                "module_title": "G5 - English - Practical",
+                                "module_code": "B-ENG-500",
+                                "start_at": 1730206800000,
+                                "end_at": 1730221200000,
+                                "oros_tags": [],
+                                "type": "rdv"
+                            }
+                        ],
+                        "hide_if_free": true,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Coruscant": {
+                        "activities": [
+                            {
+                                "activity_title": "Workshop - Presentation Brochure - Part 1",
+                                "module_title": "G5 - Professional Communication",
+                                "module_code": "B-PRO-510",
+                                "start_at": 1730206800000,
+                                "end_at": 1730210400000,
+                                "oros_tags": [],
+                                "type": "tp"
+                            },
+                            {
+                                "activity_title": "Workshop - Presentation Brochure - Part 1",
+                                "module_title": "G5 - Professional Communication",
+                                "module_code": "B-PRO-510",
+                                "start_at": 1730210400000,
+                                "end_at": 1730214000000,
+                                "oros_tags": [],
+                                "type": "tp"
+                            }
+                        ],
+                        "hide_if_free": false,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Gondor": {
+                        "activities": [
+                            {
+                                "activity_title": "Kick-off - English",
+                                "module_title": "G1 - English - Practical",
+                                "module_code": "B-ENG-100",
+                                "start_at": 1730188800000,
+                                "end_at": 1730192400000,
+                                "oros_tags": [],
+                                "type": "class"
+                            }
+                        ],
+                        "hide_if_free": false,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Hyrule": {
+                        "activities": [],
+                        "hide_if_free": true,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Johto": {
+                        "activities": [],
+                        "hide_if_free": false,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Konoha": {
+                        "activities": [
+                            {
+                                "activity_title": "MSc1",
+                                "start_at": 1730188800000,
+                                "end_at": 1730221200000,
+                                "oros_tags": []
+                            }
+                        ],
+                        "hide_if_free": false,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Lagertha": {
+                        "activities": [
+                            {
+                                "activity_title": "Msc1 - T-POO-700 - Keynotes",
+                                "start_at": 1730190600000,
+                                "end_at": 1730214000000,
+                                "oros_tags": []
+                            }
+                        ],
+                        "hide_if_free": false,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Neo": {
+                        "activities": [
+                            {
+                                "activity_title": "Point R-Type",
+                                "start_at": 1730194200000,
+                                "end_at": 1730196000000,
+                                "oros_tags": []
+                            },
+                            {
+                                "activity_title": "PreMSc - Coaching ID PRO - session 1",
+                                "start_at": 1730206800000,
+                                "end_at": 1730219400000,
+                                "oros_tags": []
+                            }
+                        ],
+                        "hide_if_free": true,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Pandora": {
+                        "activities": [
+                            {
+                                "activity_title": "Pré MSc",
+                                "start_at": 1730188800000,
+                                "end_at": 1730221200000,
+                                "oros_tags": []
+                            }
+                        ],
+                        "hide_if_free": false,
+                        "force_closed": false,
+                        "force_closed_message": ""
+                    },
+                    "Red Line": {
+                        "activities": [],
+                        "hide_if_free": true,
+                        "force_closed": true,
+                        "force_closed_message": "En travaux"
+                    },
+                    "Springfield": {
+                        "activities": [],
+                        "hide_if_free": true,
+                        "force_closed": true,
+                        "force_closed_message": "En travaux"
+                    },
+                    "Tardis": {
+                        "activities": [],
+                        "hide_if_free": true,
+                        "force_closed": true,
+                        "force_closed_message": "En travaux"
+                    },
+                    "Zaun": {
+                        "activities": [],
+                        "hide_if_free": true,
+                        "force_closed": true,
+                        "force_closed_message": "En travaux"
+                    }
+                }
+            },
+            {
+                "name": "Extérieur",
+                "colors": {
+                    "header": "#686C74"
+                },
+                "rooms": {
+                    "Amphithéâtre rue Flandres": {
+                        "activities": [],
+                        "hide_if_free": true,
+                        "french_gender": "masculine"
+                    },
+                    "Extérieur": {
+                        "activities": [],
+                        "hide_if_free": true,
+                        "french_gender": "masculine"
+                    },
+                    "Cité des Congrès": {
+                        "activities": [],
+                        "hide_if_free": true
+                    },
+                    "La Cantine - Hall 6": {
+                        "activities": [],
+                        "hide_if_free": true
+                    },
+                    "Le Palace - Place Graslin": {
+                        "activities": [],
+                        "hide_if_free": true,
+                        "french_gender": "masculine"
+                    },
+                    "Valeuriad - 14 rue François Evellin": {
+                        "activities": [],
+                        "hide_if_free": true
+                    },
+                    "Visio Teams": {
+                        "activities": [],
+                        "hide_if_free": true
+                    }
+                }
+            }
+        ]
     }
 }

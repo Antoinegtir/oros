@@ -7,11 +7,23 @@
 
 The project aims to create an app that read the JSON API of oros from Nantes and display it through an ios/android app.
 
-## Screenshots
+## Screenshots iOS
 
 Home Page               |  Detail Room
 :-------------------------:|:-------------------------:
-![](assets/home.png)|![](assets/room.png)|
+![](assets/ios/home.png)|![](assets/ios/room.png)|
+
+## Screenshots Android
+
+Home Page               |  Detail Room
+:-------------------------:|:-------------------------:
+![](assets/android/home.png)|![](assets/android/room.png)|
+
+## Screenshots Web
+
+Home Page               |  Detail Room
+:-------------------------:|:-------------------------:
+![](assets/web/home.png)|![](assets/web/room.png)|
 
 ## Language & Tools used:
 

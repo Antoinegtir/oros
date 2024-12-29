@@ -1,4 +1,5 @@
 import 'package:epitech/model/floor.module.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 double dh(BuildContext context) {
@@ -24,5 +25,5 @@ Widget sw(double width) {
 List<FloorModel> floors = [];
 
 String urlApi(String formattedDate) {
-  return 'https://api.oros.dahobul.com/rooms-activities?from=$formattedDate&to=$formattedDate';
+  return '${kIsWeb? "https://oros.vercel.app/api" : "https://api.oros.dahobul.com"}/rooms-activities?from=$formattedDate&to=$formattedDate';
 }

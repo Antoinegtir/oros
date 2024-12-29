@@ -1,0 +1,16 @@
+{
+    "name": "Rez-de-chaussée haut",
+    "colors": {
+        "header": "#823536",
+        "row_odd": "#F8EDED",
+        "row_even": "#E0B8B8"
+    },
+    "rooms": {
+        "Binder": {
+            "activities": [],
+            "hide_if_free": true,
+            "force_closed": false,
+            "force_closed_message": ""
+        }
+    }
+}

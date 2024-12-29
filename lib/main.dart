@@ -1,44 +1,29 @@
-// ignore_for_file: prefer_const_constructors
 import 'dart:convert';
-import 'package:epitech/model/localData.dart';
-import 'package:epitech/settings/about.dart';
-import 'package:epitech/settings/apparence.dart';
-import 'package:epitech/srcs/ListScreen.dart';
-import 'package:epitech/srcs/homeScreen.dart';
-import 'package:epitech/srcs/splashScreen.dart';
-import 'package:epitech/srcs/subScreen.dart';
-import 'package:epitech/utilities/utility.dart';
-import 'package:flutter/foundation.dart';
+import 'package:epitech/constants/constants.dart';
+import 'package:epitech/pages/HomePage.dart';
+import 'package:epitech/pages/RoomPage.dart';
+import 'package:epitech/services/getFloorData.service.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DateTime now = DateTime.now();
-  DateFormat dateFormat = DateFormat("yyyy-MM-dd");
+  DateFormat dateFormat = DateFormat("YYYY-MM-DD");
   String formattedDate = dateFormat.format(now);
-
   setPathUrlStrategy();
-  final url = Uri.parse(
-      'https://api.oros.dahobul.com/rooms-activities?from=$formattedDate&to=$formattedDate');
+  final url = Uri.parse(urlApi(formattedDate));
   final response = await http.get(url);
-    final dynamic jsonData = json.decode(response.body);
-    final sharedPreferences = await SharedPreferences.getInstance();
-    runApp(MyApp(jsonData: jsonData, sharedPreferences: sharedPreferences));
+  final Map<String, dynamic> jsonData = json.decode(response.body);
+  runApp(MyApp(jsonData: jsonData));
 }
 
-bool trans = true;
-
 class MyApp extends StatefulWidget {
-  final dynamic jsonData;
-  final SharedPreferences sharedPreferences;
+  final Map<String, dynamic> jsonData;
 
-  const MyApp({Key? key, this.jsonData, required this.sharedPreferences})
-      : super(key: key);
+  const MyApp({super.key, required this.jsonData});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -47,31 +32,16 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-              create: (context) =>
-                  MyThemeModel(sharedPreferences: widget.sharedPreferences)),
-          ChangeNotifierProvider(
-              create: (context) => MyThemeSettingsModel(
-                  sharedPreferences: widget.sharedPreferences)),
-          ChangeNotifierProvider(
-              create: (context) =>
-                  MyThemeModeModel(sharedPreferences: widget.sharedPreferences))
-        ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          initialRoute: "/",
-          title: "Oros",
-          routes: {
-            '/': (context) => kIsWeb
-                ? MyHomePage(jsonData: widget.jsonData)
-                : SplashScreen(jsonData: widget.jsonData),
-            '/home': (context) => MyHomePages(jsonData: widget.jsonData),
-            '/info': (context) => SubPage(jsonData: widget.jsonData),
-            '/about': (context) => const AboutPage(),
-            '/apparence': (context) => const Apparence(),
-          },
-        ));
+    FloorDataService.getFloorData(widget.jsonData['data']['room_activities']);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: "/",
+      title: "Oros",
+      routes: {
+        '/': (context) => HomePage(),
+        '/home': (context) => HomePage(),
+        '/room': (context) => RoomPage(),
+      },
+    );
   }
 }

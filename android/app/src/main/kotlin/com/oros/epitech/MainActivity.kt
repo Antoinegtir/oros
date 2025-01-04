@@ -1,4 +1,4 @@
-package com.oros.oros
+package com.oros.epitech
 
 import io.flutter.embedding.android.FlutterActivity
 
